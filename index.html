@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chat Assistant</title>
+    <meta
+      name="description"
+      content="L'Oréal Smart Routine and Product Advisor — personalized beauty guidance."
+    />
+    <title>L'Oréal Beauty Advisor</title>
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
@@ -17,50 +17,76 @@
 
   <body>
     <div class="page-wrapper">
-      <!------- Header / Branding ------->
       <header class="site-header">
-        <h1 class="site-title">Smart Product Advisor</h1>
+        <div class="brand-row">
+          <div class="brand-logo" aria-label="L'Oréal">L'OREAL</div>
+          <div class="brand-text">
+            <h1 class="site-title">Smart Routine &amp; Product Advisor</h1>
+            <p class="site-tagline">
+              Discover routines and recommendations across makeup, skincare,
+              haircare, and fragrance.
+            </p>
+          </div>
+        </div>
       </header>
 
-      <!------- Chat Area ------->
       <main>
-        <section class="chatbox">
+        <section class="chatbox" aria-label="Chat conversation">
           <div id="chatWindow" class="chat-window">
-            <!-- messages will be appended here via JS -->
+            <div id="messagesContainer" class="messages" role="log" aria-live="polite"></div>
           </div>
 
+          <div
+            id="errorBanner"
+            class="error-banner"
+            role="alert"
+            hidden
+          ></div>
+
           <form id="chatForm" class="chat-form">
-            <label for="userInput" class="visually-hidden">Message</label>
+            <label for="userInput" class="visually-hidden">Your message</label>
             <input
               id="userInput"
               name="userInput"
               type="text"
-              placeholder="Ask me about products or routines…"
+              placeholder="Ask about L'Oréal products, routines, or beauty tips…"
               autocomplete="off"
               required
             />
-            <button type="submit" id="sendBtn">
-              <span class="material-icons">send</span>
-              <span class="visually-hidden">Send</span>
+            <button type="submit" id="sendBtn" aria-label="Send message">
+              <span class="material-icons" aria-hidden="true">send</span>
             </button>
           </form>
         </section>
       </main>
 
-      <!------- Footer Links ------->
       <footer class="site-footer">
-        <p>&copy; 2025 Company Name. All rights reserved.</p>
-        <nav>
-          <!-- These URLs are placeholders -->
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Use</a>
-          <a href="#">Contact</a>
+        <p>&copy; <span id="year"></span> L'Oréal. Educational project.</p>
+        <nav aria-label="Footer links">
+          <a
+            href="https://www.loreal.com/privacy-policy"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Privacy Policy</a
+          >
+          <a
+            href="https://www.loreal.com/group"
+            target="_blank"
+            rel="noopener noreferrer"
+            >L'Oréal Group</a
+          >
+          <a
+            href="https://www.loreal.com/contact"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Contact</a
+          >
         </nav>
       </footer>
     </div>
 
-    <!-- secrets.js can be removed when using Cloudflare Workers for API requests -->
-    <script src="secrets.js"></script>
-    <script src="script.js"></script>
+    <!-- Local dev: copy secrets.example.js to secrets.js, set OPENAI_API_KEY, set API_MODE to "local" in script.js, then change src to secrets.js. -->
+    <script src="secrets.example.js"></script>
+    <script src="script.js" defer></script>
   </body>
 </html>

@@ -1,2 +1,4 @@
-# Secrets file containing API keys
+# Secrets file containing API keys (copy from secrets.example.js)
 secrets.js
+.env
+.env.*
